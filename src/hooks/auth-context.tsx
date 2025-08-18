@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       if (token) {
         console.log('Indo para dashboard');
-        router.push('/dashboard');
+        router.push('/teste');
       } else {
         console.log('Indo para home');
         router.push('/');
