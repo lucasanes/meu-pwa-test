@@ -1,9 +1,11 @@
 "use client";
 
+import Cookies from "js-cookie";
+
 export default function Home() {
 
   function signIn() {
-    localStorage.setItem("token", "your_token_here");
+    Cookies.set("token", "your_token_here");
   }
 
   return (

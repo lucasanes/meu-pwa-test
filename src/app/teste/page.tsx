@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 interface Repo {
-   name: string;
+  name: string;
   description: string;
   topics: string[];
 }
@@ -23,7 +24,7 @@ export default function Teste() {
   }, []);
 
   function signOut() {
-    localStorage.removeItem("token");
+    Cookies.remove("token");
   }
 
   return (
