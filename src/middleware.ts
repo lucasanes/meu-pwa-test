@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const paths = {
-  public: ['/', 'signup', 'recover-password', 'verify-email'],
-  private: ['dashboard'],
+  public: ['/'],
+  private: ['teste'],
 };
 
 function removeLeadingSlash(path: string) {
@@ -30,7 +30,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (token && isPublicPath && !isPrivatePath) {
-    return NextResponse.redirect(new URL('/dashboard', req.url));
+    return NextResponse.redirect(new URL('/teste', req.url));
   }
 
   return NextResponse.next();

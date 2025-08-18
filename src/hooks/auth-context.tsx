@@ -8,6 +8,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import Cookies from 'js-cookie';
 
 type AuthContextType = {
   user: string | null;
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (isOffline) {
       console.log('Está Offline');
-      const token = localStorage.get('token');
+      const token = Cookies.get('token');
 
       // const handleRedirect = async (targetPath: string) => {
       //   const cache = await caches.open('pages');
@@ -71,7 +72,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = localStorage.get('user');
+      const user = Cookies.get('user');
 
       if (user) {
         console.log('Usuário encontrado');
@@ -83,13 +84,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   function signIn() {
-    localStorage.setItem('user', 'your_user_here');
-    localStorage.setItem('token', 'your_token_here');
+    Cookies.set('user', 'your_user_here');
+    Cookies.set('token', 'your_token_here');
   }
 
   function signOut() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    Cookies.remove('user');
+    Cookies.remove('token');
   }
 
   return (
