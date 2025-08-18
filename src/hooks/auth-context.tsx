@@ -84,8 +84,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   function signIn() {
-    Cookies.set('user', 'your_user_here');
-    Cookies.set('token', 'your_token_here');
+    Cookies.set('user', 'your_user_here', {
+      secure: true,
+      sameSite: 'strict',
+      expires: 7,
+    });
+    Cookies.set('token', 'your_token_here', {
+      secure: true,
+      sameSite: 'strict',
+      expires: 7,
+    });
   }
 
   function signOut() {
