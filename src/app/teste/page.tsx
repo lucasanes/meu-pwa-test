@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { useAuth } from "@/hooks/auth-context";
 
 interface Repo {
   name: string;
@@ -12,6 +12,7 @@ interface Repo {
 export default function Teste() {
 
   const [repos, setRepos] = useState<Repo[]>([]);
+  const {signOut} = useAuth()
 
   useEffect(() => {
     async function fetchRepos() {
@@ -22,10 +23,6 @@ export default function Teste() {
 
     fetchRepos();
   }, []);
-
-  function signOut() {
-    Cookies.remove("token");
-  }
 
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
